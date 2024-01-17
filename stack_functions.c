@@ -74,7 +74,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	{
 		current = current->next;
 	}
-	while (current != head)
+	while (current != NULL)
 	{
 		printf("%d\n", current->n);
 		current = current->prev;
