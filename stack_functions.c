@@ -1,10 +1,14 @@
 #include "monty.h"
+
+
 /**
+ * push - push to the stack
+ * @stack: The address of the stack's head
+ * @line_number: The line which is being parsed
  *
- *
- *
+ * Return: Void
  */
-void	push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new, *current;
 
@@ -22,40 +26,42 @@ void	push(stack_t **stack, unsigned int line_number)
 	new->n = atoi(head_and_opcode.opcode_arg);
 	new->next = NULL;
 	current = *stack;
-	if(*stack == NULL)
+	if (*stack == NULL)
 	{
 		new->prev = *stack;
 		*stack = new;
 	}
 	if (current != NULL)
 	{
-		while(current->next != NULL)
+		while (current->next != NULL)
 		{
 			current = current->next;
 		}
 		new->prev = current;
 		current->next = new;
 	}
-	head_and_opcode.opcode_arg = NULL;	
+	head_and_opcode.opcode_arg = NULL;
 }
+
+
 /**
+ * pall - Prints all the values on the stack, starting from the top
+ * @stack: The address of the stack's head
+ * @line_number: The line which is being parsed
  *
- *
- *
+ * Return: Void
  */
-void	pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head, *current;
-	 (void) line_number;
+	(void) line_number;
 
 	head = *stack;
 	current = *stack;
-	
+
 	if (head == NULL)
-	{
-		return ;
-	}
-	while(current->next != NULL)
+		return;
+	while (current->next != NULL)
 	{
 		current = current->next;
 	}

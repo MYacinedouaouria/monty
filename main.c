@@ -3,12 +3,14 @@
 #include "monty.h"
 
 head_and_opcode_arg head_and_opcode = {NULL, NULL};
+
+
 /**
+ * main - The program's main entrance
+ * @argc: The count of cmd_line args
+ * @argv: The list of all cmd_line args
  *
- *
- *
- *
- *
+ * Return: Int
  */
 int	main(int argc, char *argv[])
 {
@@ -22,17 +24,18 @@ int	main(int argc, char *argv[])
 		FILE *f_ptr = fopen(argv[1], "r");
 		char buf[1024];
 		int line_number = 1;
+
 		if (f_ptr == NULL)
 		{
 			printf("Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
-		while(fgets(buf, 1024, f_ptr))
+		while (fgets(buf, 1024, f_ptr))
 		{
 			execute(buf, line_number);
-			
+
 			line_number++;
 		}
 	}
-	return(0);
+	return (0);
 }
