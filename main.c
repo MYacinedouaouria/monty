@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "monty.h"
 
 head_and_opcode_arg head_and_opcode = {NULL, NULL};
@@ -37,6 +35,27 @@ int	main(int argc, char *argv[])
 			line_number++;
 		}
 		fclose(f_ptr);
+		free_list();
 	}
 	return (0);
+}
+
+
+/**
+ * free_list - free the list
+ *
+ * Return: Void
+ */
+void free_list(void)
+{
+	stack_t *curr = head_and_opcode.head, *helper;
+
+	while (curr != NULL)
+	{
+		helper = curr;
+		curr = curr->next;
+		free(helper);
+	}
+
+	head_and_opcode.head = NULL;
 }

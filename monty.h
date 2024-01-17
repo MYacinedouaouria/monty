@@ -1,8 +1,9 @@
-#ifndef MONTY
-#define MONTY
+#ifndef MONTY_H
+#define MONTY_H
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,4 +50,7 @@ void	push(stack_t **stack, unsigned int line_number);
 void    pall(stack_t **stack, unsigned int line_number);
 void execute(char *buffer, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
-#endif
+void free_list();
+
+
+#endif /* MONTY_H */
