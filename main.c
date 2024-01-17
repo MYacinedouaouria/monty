@@ -36,7 +36,7 @@ int	main(int argc, char *argv[])
 
 			line_number++;
 		}
-		fclose(fptr);
+		fclose(f_ptr);
 	}
 	return (0);
 }

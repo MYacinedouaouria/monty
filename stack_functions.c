@@ -11,10 +11,11 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new, *current;
+	char *arg = head_and_opcode.opcode_arg;
 
-	if (head_and_opcode.opcode_arg == NULL)
+	if (arg == NULL)
 	{
-		printf("L %u: usage: push integer\n", line_number);
+		printf("L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
@@ -23,7 +24,12 @@ void push(stack_t **stack, unsigned int line_number)
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = atoi(head_and_opcode.opcode_arg);
+	if (atoi(arg) == 0 && *arg != '0')
+	{
+		printf("L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	new->n = atoi(arg);
 	new->next = NULL;
 	current = *stack;
 	if (*stack == NULL)
