@@ -45,6 +45,25 @@ void	push(stack_t **stack, unsigned int line_number)
  */
 void	pall(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	stack_t *head, *current;
+	 (void) line_number;
+
+	head = *stack;
+	current = *stack;
+	
+	if (head == NULL)
+	{
+		return ;
+	}
+	while(current->next != NULL)
+	{
+		current = current->next;
+	}
+	while (current != head)
+	{
+		printf("%d\n", current->n);
+		current = current->prev;
+	}
+	printf("%d\n", current->n);
+
 }
