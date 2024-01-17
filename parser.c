@@ -24,7 +24,7 @@ void execute(char *buffer, unsigned int line_number)
 			opcode_func = get_opcode_func(token);
 			if (opcode_func == NULL)
 			{
-				fprintf(stderr, "L %u: unknown instruction %s\n", line_number, token);
+				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
 				exit(EXIT_FAILURE);
 			}
 		}
