@@ -22,6 +22,7 @@ void	main(int argc, char *argv[])
 		FILE *f_ptr = fopen(argv[1], "r");
 		char buf[127];
 		int line_number = 1;
+		stack_t *head = malloc(sizeof(stack_t));
 
 		if (f_ptr == NULL)
 		{
@@ -30,7 +31,7 @@ void	main(int argc, char *argv[])
 		}
 		while(fgets(buf, 127, f_ptr))
 		{
-			execute(buf, line_number);
+			execute(buf, line_number, &head);
 			
 			line_number++;
 		}

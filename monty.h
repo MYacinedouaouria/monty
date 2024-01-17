@@ -1,3 +1,10 @@
+typedef struct {
+    char *opcode_arg;
+    stack_t *head;
+} head_and_opcode_arg;
+
+extern head_and_opcode_arg head_and_opcode;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
