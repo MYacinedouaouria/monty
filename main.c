@@ -30,6 +30,7 @@ void	main(int argc, char *argv[])
 		}
 		while(fgets(buf, 127, f_ptr))
 		{
+			execute(buf, line_number);
 			
 			line_number++;
 		}
