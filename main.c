@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 
 		if (f_ptr == NULL)
 		{
-			fprintf(stderr, "Error Can't open file %s\n", argv[1]);
+			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
 		while (fgets(buf, 1024, f_ptr))
