@@ -1,9 +1,8 @@
-typedef struct {
-    char *opcode_arg;
-    stack_t *head;
-} head_and_opcode_arg;
-
-extern head_and_opcode_arg head_and_opcode;
+#ifndef MONTY
+#define MONTY
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -33,3 +32,20 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ *
+ *
+ *
+ * 
+ */
+typedef struct {
+    char *opcode_arg;
+    stack_t *head;
+} head_and_opcode_arg;
+
+extern head_and_opcode_arg head_and_opcode;
+void	push(stack_t **stack, unsigned int line_number);
+void    pall(stack_t **stack, unsigned int line_number);
+void execute(char *buffer, unsigned int line_number);
+void (*get_opcode_function(char *op))(stack_t **stack, unsigned int line_number);
+#endif

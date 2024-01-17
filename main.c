@@ -10,7 +10,7 @@
  *
  *
  */
-void	main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
@@ -20,20 +20,21 @@ void	main(int argc, char *argv[])
 	else
 	{
 		FILE *f_ptr = fopen(argv[1], "r");
-		char buf[127];
+		char buf[1024];
 		int line_number = 1;
-		stack_t *head = malloc(sizeof(stack_t));
-
+		head_and_opcode.head = NULL;
+		head_and_opcode.opcode_arg = NULL;
 		if (f_ptr == NULL)
 		{
 			printf("Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
-		while(fgets(buf, 127, f_ptr))
+		while(fgets(buf, 1024, f_ptr))
 		{
-			execute(buf, line_number, &head);
+			execute(buf, line_number);
 			
 			line_number++;
 		}
 	}
+	return(0);
 }
