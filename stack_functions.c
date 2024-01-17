@@ -10,6 +10,8 @@ void	push(stack_t **stack, unsigned int line_number)
 
 	if (head_and_opcode.opcode_arg == NULL)
 	{
+		printf("L %u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -25,14 +27,14 @@ void	push(stack_t **stack, unsigned int line_number)
 		new->prev = *stack;
 		*stack = new;
 	}
-	if (*current != NULL)
+	if (current != NULL)
 	{
 		while(current->next != NULL)
 		{
 			current = current->next;
 		}
 		new->prev = current;
-		current-next = new;
+		current->next = new;
 	}
 	head_and_opcode.opcode_arg = NULL;	
 }
@@ -43,4 +45,6 @@ void	push(stack_t **stack, unsigned int line_number)
  */
 void	pall(stack_t **stack, unsigned int line_number)
 {
+	(void) stack;
+	(void) line_number;
 }

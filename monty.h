@@ -38,7 +38,8 @@ typedef struct instruction_s
  *
  * 
  */
-typedef struct {
+typedef struct global
+{
     char *opcode_arg;
     stack_t *head;
 } head_and_opcode_arg;
