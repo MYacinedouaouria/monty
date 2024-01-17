@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -27,7 +27,7 @@ int	main(int argc, char *argv[])
 
 		if (f_ptr == NULL)
 		{
-			printf("Error: Can't open file %s\n", argv[1]);
+			fprintf(stderr, "Error Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
 		while (fgets(buf, 1024, f_ptr))
