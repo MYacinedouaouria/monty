@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "monty.h"
 
-
+head_and_opcode_arg head_and_opcode = {NULL, NULL};
 /**
  *
  *
@@ -22,7 +22,6 @@ int	main(int argc, char *argv[])
 		FILE *f_ptr = fopen(argv[1], "r");
 		char buf[1024];
 		int line_number = 1;
-		head_and_opcode_arg head_and_opcode = {NULL, NULL};
 		if (f_ptr == NULL)
 		{
 			printf("Error: Can't open file %s\n", argv[1]);
