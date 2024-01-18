@@ -16,10 +16,12 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+		int n;
+		struct stack_s *prev;
+		struct stack_s *next;
 } stack_t;
+
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -30,27 +32,31 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+		char *opcode;
+		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
 /**
+ * struct global - list head and opcode argument
+ * @opcode_arg: Stores the opcode argument
+ * @head: The list's head
  *
- *
- *
- * 
+ * Description: To be used when making the members globaly
+ * available in all files
  */
 typedef struct global
 {
-    char *opcode_arg;
-    stack_t *head;
+	char *opcode_arg;
+	stack_t *head;
 } head_and_opcode_arg;
 
 extern head_and_opcode_arg head_and_opcode;
-void	push(stack_t **stack, unsigned int line_number);
-void    pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 void execute(char *buffer, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
-void free_list();
+void free_list(void);
 
 
 #endif /* MONTY_H */

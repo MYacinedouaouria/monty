@@ -56,7 +56,7 @@ void push(stack_t **stack, unsigned int line_number)
 /**
  * pall - Prints all the values on the stack, starting from the top
  * @stack: The address of the stack's head
- * @line_number: The line which is being parsed
+ * @line_number: The line which is being parsed(not used)
  *
  * Return: Void
  */
