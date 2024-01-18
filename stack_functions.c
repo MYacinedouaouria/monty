@@ -10,7 +10,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *current;
+	stack_t *new = malloc(sizeof(stack_t)), *current;
 	char *arg = head_and_opcode.opcode_arg;
 
 	if (arg == NULL)
@@ -20,7 +20,6 @@ void push(stack_t **stack, unsigned int line_number)
 		free_list();
 		exit(EXIT_FAILURE);
 	}
-	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -46,9 +45,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (current != NULL)
 	{
 		while (current->next != NULL)
-		{
 			current = current->next;
-		}
 		new->prev = current;
 		current->next = new;
 	}
@@ -83,13 +80,13 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- *print -  prints the value at the top of the stack
- *@stack: points to a pointer to stack_t list
- *@line_number: the number of the current line
+ * pint -  prints the value at the top of the stack
+ * @stack: points to a pointer to stack_t list
+ * @line_number: the number of the current line
  *
- *
+ * Return: Void
  */
-void	pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
