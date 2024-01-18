@@ -60,5 +60,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
 void free_list(void);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+
 
 #endif /* _MONTY_H_ */

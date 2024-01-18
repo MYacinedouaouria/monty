@@ -133,3 +133,31 @@ void pop(stack_t **stack, unsigned int line_number)
 	previous->next = NULL;
 	free(current);
 }
+
+
+/**
+ * swap -  swaps the top two elements of the stack
+ * @stack: Points to a pointer to stack_t list
+ * @line_number: The number of the current line
+ *
+ * Return: Void
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int previous_n;
+	stack_t *current = *stack;
+
+	if (current == NULL || current->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	while (current->next != NULL)
+	{
+		current = current->next;
+		previous_n = current->n;
+	}
+	current->n = current->prev->n;
+	current->prev->n = previous_n;
+}
