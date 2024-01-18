@@ -15,7 +15,7 @@ void execute(char *buffer, unsigned int line_number)
 	int round = 1;
 	void (*opcode_func)(stack_t **, unsigned int) = NULL;
 
-	if (strncmp(buffer, "#", 1) == 0)
+	if (token == NULL || (strncmp(buffer, "#", 1) == 0))
 		return;
 	while (token != NULL)
 	{
