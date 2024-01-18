@@ -55,6 +55,7 @@ extern head_and_opcode_arg head_and_opcode;
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void execute(char *buffer, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
 void free_list(void);
 
