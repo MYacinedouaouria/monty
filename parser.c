@@ -17,7 +17,7 @@ void execute(char *buffer, unsigned int line_number)
 
 	while (token != NULL)
 	{
-		if (strcmp(token, "") == 0)
+		if (strcmp(token, "") == 0 || strcmp(token, "#") == 0)
 			continue;
 		if (round == 1)
 		{
