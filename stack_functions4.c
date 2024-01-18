@@ -19,7 +19,7 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	{
 		current = current->next;
 	}
-	if (current->n > 127 && current->n < 0)
+	if (current->n > 127 || current->n < 0)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		free_list();
