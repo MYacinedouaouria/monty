@@ -1,4 +1,5 @@
 #include "monty.h"
+#define _GNU_SOURCE
 
 head_and_opcode_arg head_and_opcode = {NULL, NULL};
 
