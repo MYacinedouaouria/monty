@@ -28,7 +28,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	current->prev->n = (current->n) % (current->prev->n);
+	current->prev->n = (current->prev->n) % (current->n);
 	current->prev->next = NULL;
 	free(current);
 }
