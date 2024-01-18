@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- *
- *
- *
+ *pchar - prints the string starting at the top of the stack
+ *@stack: points to a pointer to stack_t list
+ *@line_number: the number of the current line
  *
  *
  */
