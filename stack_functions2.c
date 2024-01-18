@@ -29,3 +29,16 @@ void add(stack_t **stack, unsigned int line_number)
 	current->prev->n += current->n;
 	pop(stack, line_number);
 }
+/**
+ *nop - doesn’t do anything.
+ *@stack: points to a pointer to stack_t list
+ *@line_number: the current line number
+ *
+ *
+ *
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}
