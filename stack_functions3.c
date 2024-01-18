@@ -32,3 +32,37 @@ void mod(stack_t **stack, unsigned int line_number)
 	current->prev->next = NULL;
 	free(current);
 }
+
+
+/**
+ * pstr - Prints the string starting at the top of the stack,
+ * followed by a new line
+ *
+ * @stack: Points to a pointer to stack_t list
+ * @line_number: The number of the current line
+ *
+ * Return: Void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+
+	if (current == NULL)
+		printf("\n");
+
+	while (current->next != NULL)
+		current = current->next;
+
+	while (current != NULL)
+	{
+		if (current->n > 127 || current->n <= 0)
+			break;
+
+		printf("%c", current->n);
+
+		current = current->prev;
+	}
+	printf("\n");
+}
