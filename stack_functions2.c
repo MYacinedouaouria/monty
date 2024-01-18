@@ -72,13 +72,13 @@ void sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- *div - divides the second top element of the stack by the top element
+ *div2 - divides the second top element of the stack by the top element
  *@stack: points to a pointer to a stack_t list
  *@line_number: the number of the current line
  *
  *
  */
-void div(stack_t **stack, unsigned int line_number)
+void div2(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
@@ -97,12 +97,12 @@ void div(stack_t **stack, unsigned int line_number)
 	{
 		current = current->next;
 	}
-	if (curren->n == 0)
+	if (current->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		free_list();
 		exit(EXIT_FAILURE);
 	}
-	current->prev->n /= current->n;
+	current->prev->n = current->prev->n / current->n;
 	pop(stack, line_number);
 }
