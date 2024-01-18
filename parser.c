@@ -19,6 +19,8 @@ void execute(char *buffer, unsigned int line_number)
 		return;
 	while (token != NULL)
 	{
+		if (strcmp(token, "") == 0)
+			continue;
 		if (round == 1)
 		{
 			opcode_func = get_opcode_func(token);
