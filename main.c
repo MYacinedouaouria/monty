@@ -1,7 +1,7 @@
 #include "monty.h"
 #define _GNU_SOURCE
 
-head_and_opcode_arg head_and_opcode = {NULL, NULL};
+head_and_opcode_arg head_and_opcode = {NULL, NULL, NULL};
 
 
 /**
@@ -20,22 +20,22 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		FILE *f_ptr = fopen(argv[1], "r");
 		char buf[1024];
 		int line_number = 1;
 
-		if (f_ptr == NULL)
+		head_and_opcode.f_ptr = fopen(argv[1], "r");
+		if (head_and_opcode.f_ptr == NULL)
 		{
 			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
-		while (fgets(buf, 1024, f_ptr))
+		while (fgets(buf, 1024, head_and_opcode.f_ptr))
 		{
 			execute(buf, line_number);
 
 			line_number++;
 		}
-		fclose(f_ptr);
+		fclose(head_and_opcode.f_ptr);
 		free_list();
 	}
 	return (0);

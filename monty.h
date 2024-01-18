@@ -1,5 +1,5 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef _MONTY_H_
+#define _MONTY_H_
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -49,6 +49,7 @@ typedef struct global
 {
 	char *opcode_arg;
 	stack_t *head;
+	FILE *f_ptr;
 } head_and_opcode_arg;
 
 extern head_and_opcode_arg head_and_opcode;
@@ -59,4 +60,4 @@ void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
 void free_list(void);
 
 
-#endif /* MONTY_H */
+#endif /* _MONTY_H_ */
