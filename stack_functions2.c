@@ -78,7 +78,7 @@ void sub(stack_t **stack, unsigned int line_number)
  *
  *
  */
-void div2(stack_t **stack, unsigned int line_number)
+void divide(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
