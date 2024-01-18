@@ -19,6 +19,7 @@ void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
@@ -31,4 +32,22 @@ void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number)
 		i++;
 	}
 	return (NULL);
+}
+/**
+ * free_list - free the list
+ *
+ * Return: Void
+ */
+void free_list(void)
+{
+	stack_t *curr = head_and_opcode.head, *helper;
+
+	while (curr != NULL)
+	{
+		helper = curr;
+		curr = curr->next;
+		free(helper);
+	}
+
+	head_and_opcode.head = NULL;
 }

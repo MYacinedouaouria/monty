@@ -40,23 +40,3 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
-
-
-/**
- * free_list - free the list
- *
- * Return: Void
- */
-void free_list(void)
-{
-	stack_t *curr = head_and_opcode.head, *helper;
-
-	while (curr != NULL)
-	{
-		helper = curr;
-		curr = curr->next;
-		free(helper);
-	}
-
-	head_and_opcode.head = NULL;
-}
