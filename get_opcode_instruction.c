@@ -10,13 +10,14 @@
  */
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number)
 {
+	int i = 0;
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
-	int i = 0;
 
 	while (instructions[i].opcode)
 	{

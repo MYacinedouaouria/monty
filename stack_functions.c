@@ -101,3 +101,35 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", current->n);
 }
+
+
+/**
+ * pop - Removes the top element of the stack
+ * @stack: Points to a pointer to stack_t list
+ * @line_number: The number of the current line
+ *
+ * Return: Void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack, *previous;
+
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (current->next == NULL)
+	{
+		free(current);
+		head_and_opcode.head = NULL;
+		return;
+	}
+	while (current->next != NULL)
+	{
+		previous = current;
+		current = current->next;
+	}
+	previous->next = NULL;
+	free(current);
+}
