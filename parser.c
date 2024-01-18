@@ -15,12 +15,10 @@ void execute(char *buffer, unsigned int line_number)
 	int round = 1;
 	void (*opcode_func)(stack_t **, unsigned int) = NULL;
 
-	if (token == NULL || (strncmp(buffer, "#", 1) == 0))
+	if (token == NULL || token[0] == '#')
 		return;
 	while (token != NULL)
 	{
-		if (strcmp(token, "") == 0)
-			continue;
 		if (round == 1)
 		{
 			opcode_func = get_opcode_func(token);
