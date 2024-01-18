@@ -41,7 +41,7 @@ typedef struct instruction_s
  * struct global - list head and opcode argument
  * @opcode_arg: Stores the opcode argument
  * @head: The list's head
- *
+ * @f_ptr: the file passed as argument
  * Description: To be used when making the members globaly
  * available in all files
  */
@@ -57,6 +57,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void execute(char *buffer, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
 void free_list(void);
 void pop(stack_t **stack, unsigned int line_number);
