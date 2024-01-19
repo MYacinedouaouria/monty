@@ -91,21 +91,11 @@ void rotr(stack_t **stack, unsigned int line_number)
 		return;
 
 	while (current->next != NULL)
-	{
-		if (is_second == 1)
-		{
-			current->prev = NULL;
-			head_and_opcode.head = current;
-			is_second = 0;
-		}
-		if (is_first == 1)
-		{
-			first = current;
-			is_second = 1, is_first = 0;
-		}
-
 		current = current->next;
-	}
+
+	first->next->prev = NULL;
+	*stack = first->next;
+
 	current->next = first;
 	first->prev = current;
 	first->next = NULL;
