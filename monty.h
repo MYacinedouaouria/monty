@@ -42,8 +42,8 @@ typedef struct instruction_s
  * struct global - list head and opcode argument
  * @opcode_arg: Stores the opcode argument
  * @head: The list's head
- * @f_ptr: the file passed as argument
- * Description: To be used when making the members globaly
+ * @f_ptr: the file passed as an argument
+ * Description: To be used when making the members globally
  * available in all files
  */
 typedef struct global
@@ -51,30 +51,41 @@ typedef struct global
 	char *opcode_arg;
 	stack_t *head;
 } head_and_opcode_arg;
-
 extern head_and_opcode_arg head_and_opcode;
+
 
 /* tools.c */
 int isValidInteger(char *string);
 void free_list(void);
 
+/* stack_functions.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void execute(char *buffer, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+
+/* stack_functions2.c */
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
-void pchar(stack_t **stack, unsigned int line_number);
 void multiply(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
+
+/* parse.c */
+void execute(char *buffer, unsigned int line_number);
+
+/* stack_functions3.c */
 void mod(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+
+/* stack_functions4.c */
+void pchar(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+
+/* get_opcode_instruction.c */
+void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
 
 
 #endif /* _MONTY_H_ */
