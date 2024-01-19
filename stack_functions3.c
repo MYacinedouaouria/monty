@@ -82,8 +82,7 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack, *first;
-	int is_first = 1, is_second = 0;
+	stack_t *current = *stack, *first = *stack;
 
 	(void)line_number;
 
