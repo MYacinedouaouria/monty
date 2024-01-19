@@ -82,18 +82,31 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
+	stack_t *current = *stack, *first;
+	int is_first = 1, is_second = 0;
 
 	(void)line_number;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (current == NULL || current->next == NULL)
 		return;
 
 	while (current->next != NULL)
-	current = current->next;
+	{
+		if (is_second == 1)
+		{
+			current->prev = NULL;
+			head_and_opcode.head = current;
+			is_second = 0;
+		}
+		if (is_first == 1)
+		{
+			first = current;
+			is_second = 1, is_first = 0;
+		}
 
-	current->prev->next = NULL;
-	current->next = *stack;
-	(*stack)->prev = current;
-	*stack = current;
+		current = current->next;
+	}
+	current->next = first;
+	first->prev = current;
+	first->next = NULL;
 }
