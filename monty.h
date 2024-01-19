@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,10 +50,14 @@ typedef struct global
 {
 	char *opcode_arg;
 	stack_t *head;
-	FILE *f_ptr;
 } head_and_opcode_arg;
 
 extern head_and_opcode_arg head_and_opcode;
+
+/* tools.c */
+int isValidInteger(char *string);
+void free_list(void);
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void execute(char *buffer, unsigned int line_number);
@@ -64,7 +70,6 @@ void pchar(stack_t **stack, unsigned int line_number);
 void multiply(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void (*get_opcode_func(char *op))(stack_t **stack, unsigned int line_number);
-void free_list(void);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);

@@ -10,27 +10,23 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = malloc(sizeof(stack_t)), *current;
 	char *arg = head_and_opcode.opcode_arg;
+	stack_t *current, *new = malloc(sizeof(stack_t));
 
-	if (arg == NULL)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_list();
-		exit(EXIT_FAILURE);
-	}
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_list();
 		exit(EXIT_FAILURE);
 	}
-	if (atoi(arg) == 0 && *arg != '0')
+
+	if (arg == NULL || !isValidInteger(arg))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_list();
 		exit(EXIT_FAILURE);
 	}
+
 	new->n = atoi(arg);
 	new->next = NULL;
 	current = *stack;
