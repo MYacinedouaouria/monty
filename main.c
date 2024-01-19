@@ -1,6 +1,6 @@
 #include "monty.h"
 
-head_and_opcode_arg head_and_opcode = {NULL, NULL};
+head_and_opcode_arg globals = {NULL, NULL, 1};
 
 
 /**

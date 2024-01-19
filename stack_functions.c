@@ -10,7 +10,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	char *arg = head_and_opcode.opcode_arg;
+	char *arg = globals.opcode_arg;
 	stack_t *current, *new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -19,21 +19,25 @@ void push(stack_t **stack, unsigned int line_number)
 		free_list();
 		exit(EXIT_FAILURE);
 	}
-
 	if (arg == NULL || !isValidInteger(arg))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_list();
 		exit(EXIT_FAILURE);
 	}
-
 	new->n = atoi(arg);
 	new->next = NULL;
 	current = *stack;
 	if (*stack == NULL)
 	{
-		new->prev = *stack;
-		*stack = new;
+		new->prev = NULL;
+		globals.head = new;
+		return;
+	}
+	if (globals.isStackOn == 0 && *stack != NULL)
+	{
+		add_at_bottom(new);
+		return;
 	}
 	if (current != NULL)
 	{
@@ -42,7 +46,7 @@ void push(stack_t **stack, unsigned int line_number)
 		new->prev = current;
 		current->next = new;
 	}
-	head_and_opcode.opcode_arg = NULL;
+	globals.opcode_arg = NULL;
 }
 
 
@@ -63,9 +67,8 @@ void pall(stack_t **stack, unsigned int line_number)
 	if (current == NULL)
 		return;
 	while (current->next != NULL)
-	{
 		current = current->next;
-	}
+
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -115,7 +118,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (current->next == NULL)
 	{
 		free(current);
-		head_and_opcode.head = NULL;
+		globals.head = NULL;
 		return;
 	}
 	while (current->next != NULL)

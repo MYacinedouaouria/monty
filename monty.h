@@ -42,7 +42,7 @@ typedef struct instruction_s
  * struct global - list head and opcode argument
  * @opcode_arg: Stores the opcode argument
  * @head: The list's head
- * @f_ptr: the file passed as an argument
+ * @isStackOn: are the list following stack? if yes assign 1
  * Description: To be used when making the members globally
  * available in all files
  */
@@ -50,13 +50,15 @@ typedef struct global
 {
 	char *opcode_arg;
 	stack_t *head;
+	int isStackOn;
 } head_and_opcode_arg;
-extern head_and_opcode_arg head_and_opcode;
+extern head_and_opcode_arg globals;
 
 
 /* tools.c */
 int isValidInteger(char *string);
 void free_list(void);
+void add_at_bottom(stack_t *new);
 
 /* stack_functions.c */
 void push(stack_t **stack, unsigned int line_number);
@@ -79,6 +81,8 @@ void execute(char *buffer, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 
 /* stack_functions4.c */
 void pchar(stack_t **stack, unsigned int line_number);

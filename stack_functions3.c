@@ -99,3 +99,35 @@ void rotr(stack_t **stack, unsigned int line_number)
 	first->prev = current;
 	first->next = NULL;
 }
+
+
+/**
+ * stack - Makes globals.isStackOn = 1
+ * @stack: Not used
+ * @line_number: Not used
+ *
+ * Return: Void
+ */
+void stack(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+
+	globals.isStackOn = 1;
+}
+
+
+/**
+ * queue - Makes globals.isStackOn = 0
+ * @stack: Not used
+ * @line_number: Not used
+ *
+ * Return: Void
+ */
+void queue(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+
+	globals.isStackOn = 0;
+}

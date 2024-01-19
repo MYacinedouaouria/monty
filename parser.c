@@ -31,7 +31,7 @@ void execute(char *buffer, unsigned int line_number)
 			}
 		}
 		if (round == 2)
-			head_and_opcode.opcode_arg = token;
+			globals.opcode_arg = token;
 
 		token = strtok(NULL, " \n");
 		round++;
@@ -40,6 +40,6 @@ void execute(char *buffer, unsigned int line_number)
 	}
 	if (opcode_func != NULL)
 	{
-		opcode_func(&head_and_opcode.head, line_number);
+		opcode_func(&globals.head, line_number);
 	}
 }

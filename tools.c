@@ -27,7 +27,7 @@ int isValidInteger(char *string)
  */
 void free_list(void)
 {
-	stack_t *curr = head_and_opcode.head, *helper;
+	stack_t *curr = globals.head, *helper;
 
 	while (curr != NULL)
 	{
@@ -36,5 +36,23 @@ void free_list(void)
 		free(helper);
 	}
 
-	head_and_opcode.head = NULL;
+	globals.head = NULL;
+}
+
+
+/**
+ * add_at_bottom - add the given node at the bottom of a doubly list
+ * @new: The pointer to the newly created node
+ *
+ * Return: Void
+ */
+void add_at_bottom(stack_t *new)
+{
+	stack_t *current = globals.head;
+
+	new->prev = NULL;
+	new->next = current;
+	current->prev = new;
+	globals.head = new;
+	globals.opcode_arg = NULL;
 }
