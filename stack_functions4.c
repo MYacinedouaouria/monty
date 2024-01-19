@@ -27,3 +27,29 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", current->n);
 }
+/**
+ *rotl -  rotates the stack to the top.
+ *@stack:  points to a pointer to a stack_t list
+ *@line_number: the number of the current line
+ *
+ *
+ */
+void    rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first = *stack, *last = *stack;
+
+	(void) line_number;
+	if (first == NULL || first->next == NULL)
+	{
+		return;
+	}
+	while (last->next != NULL)
+	{
+		last = last->next;
+	}
+	last->prev->next = NULL;
+	last->prev = NULL;
+	last->next = first;
+	first->prev = last;
+	*stack = last;
+}
