@@ -33,7 +33,7 @@ $
 $
 pall This is the end of our program. Monty is awesome!$
 ```
-##Usage
+## Usage
 All the files are compiled in the following form:
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o monty.
